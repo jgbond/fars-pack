@@ -45,3 +45,7 @@ vignette.
 ``` r
 fars_map_state(5, 2014)
 ```
+
+## Travis badge
+
+[![Build Status](https://travis-ci.com/jgbond/fars-pack.svg?branch=master)](https://travis-ci.com/jgbond/fars-pack)
