@@ -31,7 +31,7 @@ library(fars)
 
 This is an example of how to use the fars\_summarize\_years() function
 in action. It takes a list of years as the input. Years generally should
-be in 4-digit format. Outputs are not displayed in the vignette.
+be in 4-digit format. Outputs are not displayed in the vignette or readmes.
 
 ``` r
 fars_summarize_years(list(2013,2014,2015))
@@ -40,7 +40,7 @@ fars_summarize_years(list(2013,2014,2015))
 This is an example of the fars\_map\_state() function in action. As
 inputs it takes a numerical code for a U.S. state and a 4-digit year.
 Not all states have data for all years. Outputs are not displayed in the
-vignette.
+vignette or readmes.
 
 ``` r
 fars_map_state(5, 2014)
