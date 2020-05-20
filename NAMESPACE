@@ -1,5 +1,5 @@
-export(fars_map_state)
-export(fars_summarize_years)
+export("fars_map_state")
+export("fars_summarize_years")
 
 import(magrittr)
 importFrom(readr, "read_csv")
@@ -7,3 +7,4 @@ importFrom(dplyr, "filter", "select", "mutate", "tbl_df", "group_by", "summarize
 importFrom(tidyr, "spread")
 importFrom(maps, "map")
 importFrom(graphics, "points")
+importFrom("utils", "download.file", "unzip")

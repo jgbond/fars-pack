@@ -17,5 +17,6 @@ This function searches for and reads in a FARS data file
 with the specified \code{years} list. It then converts the
 data into a Tibble with the number of incidents in each month
 for each specified year. It will notify if the years are invalid.
-The list of years must be valid.
+The list of years must be valid. If the files do not exist, the
+function will create the director, download, and unzip the files.
 }

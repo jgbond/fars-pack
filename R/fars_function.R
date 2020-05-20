@@ -9,7 +9,8 @@
 #'
 #' @return This function returns a Tidyverse "Tibble" datatable
 #'
-#' @importFrom readr, dplyr
+#' @importFrom readr read_csv
+#' @importFrom dplyr tbl_df
 
 fars_read <- function(filename) {
         if(!file.exists(filename))
@@ -48,12 +49,12 @@ make_filename <- function(year) {
 #'
 #' @return A tibble of FARS data with number of events in with each year by month
 #'
-#' @importFrom dplyr
+#' @importFrom dplyr mutate select
 
 fars_read_years <- function(years) {
         if (!file.exists("data")) {dir.create("data")}
         fileUrl <- "https://d3c33hcgiwev3.cloudfront.net/_e1adac2a5f05192dc8780f3944feec13_fars_data.zip?Expires=1590019200&Signature=dQdlUb4gY-BmnTHQPCPtUy-JVAVJRBJBKVA56Rs4RZE4kWLU78kexfqL7a6Po7yYTAmmfec-~BInDLrdheqT0S~ebOIYNVBrBIeivV6zkXMyIfFNzIOIaMa1~IA2~cPX8XZCCzhEWH32dhj8GbeL4G9QJnhhVk5G5qzx8jMr1p0_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A"
-        if (!file.exists("data/fars_data.zip")){download.file(fileUrl)}
+        if (!file.exists("data/fars_data.zip")){download.file(fileUrl, destfile = "data/fars_data.zip")}
         if (!file.exists("data/accident_2013.csv.bz2")) {unzip("data/fars_data.zip")}
         lapply(years, function(year) {
                 file <- make_filename(year)
@@ -67,7 +68,7 @@ fars_read_years <- function(years) {
                 })
         })
 }
-?e
+
 #' Summarize FARS data observations by year and month
 #'
 #' This function creates a single Tibble of all FARS data across
@@ -78,6 +79,9 @@ fars_read_years <- function(years) {
 #' @param years A list of numerical years
 #'
 #' @return A single Tibble comprised of 1 or more years of FARS data
+#'
+#' @importFrom dplyr bind_rows group_by summarize
+#' @importFrom tidyr spread
 
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
@@ -100,7 +104,9 @@ fars_summarize_years <- function(years) {
 #'
 #' @return A map with accidents plotted by latitutde and longitude
 #'
-#' @importFrom dplyr, maps, graphics
+#' @importFrom dplyr filter
+#' @importFrom maps map
+#' @importFrom graphics points
 
 fars_map_state <- function(state.num, year) {
         filename <- make_filename(year)
