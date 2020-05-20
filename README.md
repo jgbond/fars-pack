@@ -16,7 +16,8 @@ locations of all FARS events in the specified year.
 FARS data is from the US National Highway Traffic Safety
 Administration’s Fatality Analysis Reporting System, which is a
 nationwide census providing the American public yearly data regarding
-fatal injuries suffered in motor vehicle traffic crashes.
+fatal injuries suffered in motor vehicle traffic crashes. The data
+provided in this package only covers the years 2013-2015.
 
 ## Accessing the package
 
@@ -29,16 +30,17 @@ library(fars)
 ## Examples
 
 This is an example of how to use the fars\_summarize\_years() function
-in action. It takes a list of years as the input. Outputs are not
-displayed in the README.
+in action. It takes a list of years as the input. Years generally should
+be in 4-digit format. Outputs are not displayed in the vignette.
 
 ``` r
 fars_summarize_years(list(2013,2014,2015))
 ```
 
 This is an example of the fars\_map\_state() function in action. As
-inputs it takes a numerical code for a U.S. state and a year. Outputs
-are not displayed in the README.
+inputs it takes a numerical code for a U.S. state and a 4-digit year.
+Not all states have data for all years. Outputs are not displayed in the
+vignette.
 
 ``` r
 fars_map_state(5, 2014)
